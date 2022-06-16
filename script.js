@@ -1,24 +1,19 @@
-// Assignment code here
 var enter;
-var numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var character;
 var lowercase;
 var uppercase;
+var numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 characterArr = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 letter = ['a', 'b','c','d','e','f','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
-
-
-var toUpper = function(x) {
-
+const toUpper = function(x) {
   return x.toUpperCase();
 };
 
 letter2 = letter.map(toUpper);
 
-
-var get = document.querySelector("#generate")
+const get = document.querySelector("#generate")
 
 get.addEventListener("click", function () {
   p = generatePassword();
@@ -30,7 +25,7 @@ function generatePassword() {
   enter = parseInt(prompt("Choose between 8 and 128 characters for your password."));
 
   if (!enter) {
-    alert('This needs a value');
+    alert('Needs value');
   }
   else if (enter < 8 || enter > 128) {
 
@@ -38,10 +33,10 @@ function generatePassword() {
     
   }
   else {
-    number = confirm('Will this contain numbers?');
-    character = confirm('Will this contain special characters?');
-    uppercase = confirm('Will this contain uppercase letters?');
-    lowercase = confirm('Will this contain lowercase numbers?');
+    number = confirm('Will your password have numbers?');
+    character = confirm('Will your password have special characters?');
+    uppercase = confirm('Will your password have uppercase letters?');
+    lowercase = confirm('Will your password have lowercase numbers?');
   };
 
   if (!character && !number && !uppercase && !lowercase) {
@@ -62,11 +57,11 @@ function generatePassword() {
 
   console.log(characters)
 
-  var password = [];
+  const password = [];
 
   for (var i = 0; i < enter; i++) {
-    var pickChoices = characters[Math.floor(Math.random() * characters.length)];
-    password.push(pickChoices);
+    var pickCriteria = characters[Math.floor(Math.random() * characters.length)];
+    password.push(pickCriteria);
 
   }
 
