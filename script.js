@@ -1,30 +1,32 @@
 // Assignment code here
 var enter;
-var number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var numberArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 var character;
 var lowercase;
 var uppercase;
 
-character = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+characterArr = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 letter = ['a', 'b','c','d','e','f','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-space = [];
 
-var choices;
+
 
 var toUpper = function(x) {
+
   return x.toUpperCase();
 };
 
 letter2 = letter.map(toUpper);
 
+
 var get = document.querySelector("#generate")
 
 get.addEventListener("click", function () {
   p = generatePassword();
-  document.getElementById("password").placeholder = p;
+  document.getElementById("password").value = p;
 });
 
 function generatePassword() {
+  var characters = []
   enter = parseInt(prompt("Choose between 8 and 128 characters for your password."));
 
   if (!enter) {
@@ -43,84 +45,32 @@ function generatePassword() {
   };
 
   if (!character && !number && !uppercase && !lowercase) {
-    choices = alert('Must choose a criteria');
+  alert('Must choose a criteria');
   }
-  else if (character && number && uppercase && lowercase) {
-    choices = character.concat(number, letter, letter2);
-
+   if(number){
+     characters = characters.concat(numberArr)
+   }
+   if(character){
+    characters = characters.concat(characterArr)
   }
-
-  else if (character && number && uppercase) {
-    choices = character.concat(number, letter2);
+  if(uppercase){
+    characters = characters.concat(letter2)
   }
-
-  else if (character && number && lowercase) {
-    choices = character.concat(number, letter);
-  }
-
-  else if (character && lowercase && uppercase) {
-    choices = character.concat(letter, letter2);
+  if(lowercase){
+    characters = characters.concat(letter)
   }
 
-  else if (number && lowercase && uppercase) {
-    choices = number.concat(letter, letter2);
-  }
-
-  else if (character && number) {
-    choices = character.concat(number);
-  }
-
-  else if (character && lowercase) {
-    choices = character.concat(letter);
-  }
-
-  else if (character && uppercase) {
-    choices = character.concat(letter2);
-  }
-
-  else if (number && lowercase) {
-    choices = letter.concat(number);
-  }
-
-  else if (lowercase && uppercase) {
-    choices = letter.concat(letter2);
-  }
-
-  else if (number && uppercase) {
-    choices = number.concat(letter2);
-  }
-
-  else if (character) {
-    choices = character;
-  }
-
-  else if (number) {
-    choices = number;
-  }
-
-  else if (lowercase) {
-    choices = letter;
-  }
-
-  else if (uppercase) {
-    choices = space.concat(letter2)
-  };
+  console.log(characters)
 
   var password = [];
 
   for (var i = 0; i < enter; i++) {
-    var pickChoices = choices[Math.floor(Math.random() * choices.length)];
-    password.push(pickchoices);
+    var pickChoices = characters[Math.floor(Math.random() * characters.length)];
+    password.push(pickChoices);
 
   }
 
   var p = password.join('');
-  UserInput(p);
   return p;
-
-}
-
-function UserInput(p) {
-  document.getElementById('password').textcontent = p;
 
 }
